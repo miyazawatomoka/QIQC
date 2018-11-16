@@ -50,8 +50,6 @@ class WordEmbeddingUtil:
             return self.unk_vec
         elif (not self.is_word_in_word2vec(word)) and self.is_word_in_word2vec(word.lower()):
             word = word.lower()
-        if not self.is_word_in_word2vec(word):
-            return self.unk_vec
         return self.word2vec[word]
 
     def is_word_in_word2vec(self, word):
