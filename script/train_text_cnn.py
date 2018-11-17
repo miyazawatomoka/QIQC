@@ -19,7 +19,7 @@ def main():
         print("===============================  EPOCH {:d}  ===============================".format(epoch))
         trainer.train()
         trainer.test()
-    trainer.test()
+
 
 if __name__ == '__main__':
     main()
