@@ -4,6 +4,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import stopwords
+from config import Config
 
 
 class TextUtil:
@@ -58,3 +59,12 @@ class TextUtil:
     @classmethod
     def filter_punctuation(cls, words):
         return [word for word in words if word.isalpha()]
+
+    @classmethod
+    def get_words_with_len(cls, words):
+        if len(words) < Config.SENTENCE_MAX_LEN - 2:
+            words = [Config.START_CHAR] + words + [Config.PADDING_CHAR] * (Config.SENTENCE_MAX_LEN - 2 - len(words)) + [
+                Config.END_CHAR]
+        else:
+            words = [Config.START_CHAR] + words[0, Config.SENTENCE_MAX_LEN - 2] + [Config.END_CHAR]
+        return words
