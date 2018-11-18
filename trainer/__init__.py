@@ -1,6 +1,6 @@
-from .text_cnn_trainer import TextCNNTrainer
+from .norm_trainer import NormTrainer
 
 
-__all__ = [TextCNNTrainer]
+__all__ = [NormTrainer]
 
 
