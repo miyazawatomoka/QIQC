@@ -12,7 +12,7 @@ class TestCNNTest(TestCase):
 
     def test_forword(self):
         model = TextCNN()
-        word2vec_martix = np.load('../../data/word2vec_martix.npy')
+        word2vec_martix = np.load('../data/word2vec_martix.npy')
         mt = torch.tensor(word2vec_martix)
         vmt = Variable(mt)
         mmt = model(vmt)
