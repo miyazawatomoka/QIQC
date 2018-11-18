@@ -7,12 +7,11 @@ import torch
 from utils import TrainerUtil
 
 
-class TextCNNTrainer:
-    def __init__(self, train_dataset, test_dataset):
-        self.model = TextCNN()
+class NormTrainer:
+    def __init__(self, model, train_dataset, test_dataset):
+        self.model = model
         self.train_loader = DataLoader(train_dataset, shuffle=True, batch_size=Config.CNN_BATCH_SIZE)
         self.test_loader = DataLoader(test_dataset)
-        # Adam优化器参数为默认,可调参
         self.optimizer = optim.Adam(self.model.parameters())
         self.criterion = torch.nn.BCELoss()
         if Config.USE_GPU:
@@ -52,3 +51,6 @@ class TextCNNTrainer:
                 test_loss += loss.item()
         print("Total loss: {:.4f}".format(test_loss))
         print("Accuracy is: {: .4f}".format(correct_count / len(self.test_loader.dataset)))
+
+    def save_model(self, path):
+        torch.save(self.model, path)
