@@ -1,5 +1,4 @@
 from torch.autograd import Variable
-from model import TextCNN
 from torch.utils.data import DataLoader
 from config import Config
 from torch import optim
