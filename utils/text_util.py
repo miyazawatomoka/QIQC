@@ -61,7 +61,7 @@ class TextUtil:
         return [word for word in words if word.isalpha()]
 
     @classmethod
-    def get_sentence_with_len(cls, words):
+    def get_words_with_len(cls, words):
         if len(words) < Config.SENTENCE_MAX_LEN - 2:
             words = [Config.START_CHAR] + words + [Config.PADDING_CHAR] * (Config.SENTENCE_MAX_LEN - 2 - len(words)) + [
                 Config.END_CHAR]
