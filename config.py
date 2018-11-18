@@ -27,6 +27,9 @@ class Config:
     CNN_BATCH_SIZE = 20
     CNN_EPOCH = 10
 
+
+    # NormTrainer
+    Norm_BATCH_SIZE = 20
     # PARAMTER
     TESTSET_RATE = 0.3
     POSTIVE_TIMES = 4                                # 平均训练几次加入一个正样本

@@ -8,9 +8,9 @@ from utils import TrainerUtil
 
 
 class NormTrainer:
-    def __init__(self, model, train_dataset, test_dataset):
+    def __init__(self, model, train_dataset, test_dataset, batch_size=Config.Norm_BATCH_SIZE):
         self.model = model
-        self.train_loader = DataLoader(train_dataset, shuffle=True, batch_size=Config.CNN_BATCH_SIZE)
+        self.train_loader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
         self.test_loader = DataLoader(test_dataset)
         self.optimizer = optim.Adam(self.model.parameters())
         self.criterion = torch.nn.BCELoss()
