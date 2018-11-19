@@ -20,6 +20,13 @@ class Config:
     EMBEDDING_SIZE = 300
     WORD_FREQUENCY = 3                              # 词频数大于这个列入词列表
 
+    # WORD EMBEDDING CONSTANT
+    PADDING_IDX = 2
+    END_IDX = 1
+    START_IDX = 0
+    UNKNOWN_IDX = 3
+    RETAIN_COUNT = 4
+
     # TEXT CNN
     CNN_OUT_CHANNEL_NUM = 20
     CNN_DROPOUT = 0.5
@@ -27,9 +34,9 @@ class Config:
     CNN_BATCH_SIZE = 20
     CNN_EPOCH = 10
 
-
     # NormTrainer
     Norm_BATCH_SIZE = 20
+
     # PARAMTER
     TESTSET_RATE = 0.3
     POSTIVE_TIMES = 4                                # 平均训练几次加入一个正样本
