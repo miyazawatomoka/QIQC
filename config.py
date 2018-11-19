@@ -12,8 +12,8 @@ class Config:
     LABEL_PATH = '../data/train_label.npy'
 
     # WORD EMBEDDING PATH
-    WORD2VEC_PATH = 'D:/dataset/word2vec/GoogleNews-vectors-negative300.bin'
-    WORD2VEC_DATA_PATH = '../data/word2vec_idx_data.npy'
+    WORD2VEC_PATH = '../../input/embeddings/GoogleNews-vectors-negative300.bin'
+    WORD2VEC_DATA_PATH = '../../input/word2vec_idx_data.npy'
 
     # WORD EMBEDDING PARAMETER
     SENTENCE_MAX_LEN = 50

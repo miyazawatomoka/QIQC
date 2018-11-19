@@ -9,11 +9,11 @@ import gc
 import torch
 
 train_dataset = Word2vecStaticDataset(is_train=True,
-                                           label_path='../data/train_label.npy',
-                                           data_path='../data/word2vec_idx_data.npy')
+                                           label_path='../../input/train_label.npy',
+                                           data_path='../../input/word2vec_idx_data.npy')
 test_dataset = Word2vecStaticDataset(is_train=False,
-                                          label_path='../data/train_label.npy',
-                                          data_path='../data/word2vec_idx_data.npy')
+                                          label_path='../../input/train_label.npy',
+                                          data_path='../../input/word2vec_idx_data.npy')
 
 
 def main():
@@ -36,7 +36,7 @@ def main():
         if epoch % 5 == 0:
             print("===============================  Test  ===============================")
             trainer.test()
-    trainer.save_model('../pretrained/text_cnn_static.h5')
+    trainer.save_model('../../pretrained/text_cnn_static.h5')
 
 
 if __name__ == '__main__':
