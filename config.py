@@ -13,7 +13,7 @@ class Config:
 
     # WORD EMBEDDING PATH
     WORD2VEC_PATH = 'D:/dataset/word2vec/GoogleNews-vectors-negative300.bin'
-    WORD2VEC_DATA_PATH = '../data/word2vec_martix.npy'
+    WORD2VEC_DATA_PATH = '../data/word2vec_idx_data.npy'
 
     # WORD EMBEDDING PARAMETER
     SENTENCE_MAX_LEN = 50

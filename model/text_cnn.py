@@ -10,13 +10,13 @@ class TextCNN(nn.Module):
     A CNN for text classification.
     Uses an embedding layer, followed by a convolutional, max-pooling and softmax layer.
     """
-    def __init__(self, pretrained_weight):
+    def __init__(self, pretrained_weight, is_static=False):
         super(TextCNN, self).__init__()
         self.with_embedding = False
         in_channel = 1
         out_channel = Config.CNN_KERNEL_NUM
         kernel_sizes = [3, 4, 5]
-        self.embedding = nn.Embedding.from_pretrained(pretrained_weight, freeze=False)
+        self.embedding = nn.Embedding.from_pretrained(pretrained_weight, freeze=(not is_static))
         self.conv = nn.ModuleList([nn.Conv2d(in_channel, out_channel, (K, Config.EMBEDDING_SIZE)) for K in kernel_sizes])
 
         self.dropout = nn.Dropout(Config.CNN_DROPOUT)
@@ -28,7 +28,8 @@ class TextCNN(nn.Module):
         :param input_x: a list size having the number of batch_size elements with the same length
         :return: batch_size X num_aspects tensor
         """
-        x = self.embedding(input_x)
+        x = Variable(input_x)
+        x = self.embedding(x)
 
         # Conv & max pool
         x = x.unsqueeze(1)  # dim: (batch_size, 1, max_seq_len, embedding_size)

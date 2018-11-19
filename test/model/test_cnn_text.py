@@ -3,17 +3,23 @@ from model import TextCNN
 import numpy as np
 import torch
 from torch.autograd import Variable
+from utils import Word2vecUtil, WordEmbeddingUtil
+from config import Config
+import gc
 
 
 class TestCNNTest(TestCase):
-    def test_model(self):
-        model = TextCNN()
-        # print(model)
+    def setUp(self):
+        super().setUp()
+        # self.weight = WordEmbeddingUtil().get_embedding_weight(Word2vecUtil(Config.WORD2VEC_PATH).get_weight())
+        # self.model = TextCNN(pretrained_weight=self.weight )
+        # gc.collect()
 
     def test_forword(self):
-        model = TextCNN()
-        word2vec_martix = np.load('../data/word2vec_martix.npy')
-        mt = torch.tensor(word2vec_martix)
-        vmt = Variable(mt)
-        mmt = model(vmt)
-        # print(mmt)
+        pass
+        # model = TextCNN()
+        # tdata = np.load('../data/data_in_inx.npy')
+        # mt = torch.LongTensor(tdata)
+        # vmt = Variable(mt)
+        # mmt = model(vmt)
+        # # print(mmt)
