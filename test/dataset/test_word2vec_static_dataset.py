@@ -5,8 +5,8 @@ from dataset import Word2vecStaticDataset
 class TestWord2vecStaticDataset(TestCase):
     def setUp(self):
         super().setUp()
-        self.label_path = '../data/train_label.npy'
-        self.data_path = '../data/word2vec_idx_data.npy'
+        self.label_path = '../../input/train_label.npy'
+        self.data_path = '../../input/word2vec_idx_data.npy'
         self.train_wsd = Word2vecStaticDataset(label_path=self.label_path, data_path=self.data_path, is_train=True)
         self.test_wsd = Word2vecStaticDataset(label_path=self.label_path, data_path=self.data_path, is_train=False)
 
