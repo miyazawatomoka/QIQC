@@ -111,3 +111,6 @@ data
 
 # pretrained
 pretrained
+
+# cache
+cache
