@@ -71,7 +71,7 @@ class WordEmbeddingUtil:
         elif word in word2idx:
             return word2idx[word] + Config.RETAIN_COUNT
         elif (word not in word2idx) and (word.lower() in word2idx):
-            return word2idx[word.lower] + Config.RETAIN_COUNT
+            return word2idx[word.lower()] + Config.RETAIN_COUNT
 
 
 
