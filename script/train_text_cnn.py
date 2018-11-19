@@ -26,14 +26,16 @@ def main():
     gc.collect()
     print("Get pre-trained embedding weight finished")
     print("Build model...")
-    model = TextCNN(pretrained_weight=emb_weight, is_static=False)
+    model = TextCNN(pretrained_weight=emb_weight, is_static=False).double()
     print("Build model finished")
     trainer = NormTrainer(model=model, train_dataset=test_dataset, test_dataset=test_dataset)
     print("Begin Train Text-CNN")
     for epoch in range(Config.CNN_EPOCH):
         print("===============================  EPOCH {:d}  ===============================".format(epoch))
         trainer.train()
-        trainer.test()
+        if epoch % 5 == 0:
+            print("===============================  Test  ===============================")
+            trainer.test()
     trainer.save_model('../pretrained/text_cnn_static.h5')
 
 

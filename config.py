@@ -32,11 +32,11 @@ class Config:
     CNN_DROPOUT = 0.5
     CNN_KERNEL_NUM = 100
     CNN_BATCH_SIZE = 20
-    CNN_EPOCH = 10
+    CNN_EPOCH = 50
 
     # NormTrainer
-    Norm_BATCH_SIZE = 20
+    Norm_BATCH_SIZE = 500
 
     # PARAMTER
-    TESTSET_RATE = 0.3
+    TESTSET_RATE = 0.2
     POSTIVE_TIMES = 4                                # 平均训练几次加入一个正样本
