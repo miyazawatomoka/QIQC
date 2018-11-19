@@ -22,7 +22,7 @@ class NormTrainer:
         for batch_idx, (data, label) in enumerate(self.train_loader):
             self.optimizer.zero_grad()
             vdata = Variable(data)
-            vlabel = Variable(label.float())
+            vlabel = Variable(label)
             if Config.USE_GPU:
                 vdata = vdata.cuda()
                 vlabel = vlabel.cuda()
