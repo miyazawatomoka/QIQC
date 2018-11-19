@@ -2,6 +2,7 @@ from torch.utils import data
 from config import Config
 import numpy as np
 from sklearn.model_selection import train_test_split
+import torch
 
 
 class Word2vecStaticDataset(data.Dataset):
@@ -18,11 +19,11 @@ class Word2vecStaticDataset(data.Dataset):
         if self.is_train:
             if np.random.randint(Config.POSTIVE_TIMES) == 0:
                 idx = np.random.choice(self.train_data_postive_idxs)
-                return self.data_train[idx], self.label_train[idx]
+                return torch.LongTensor(self.data_train[idx]), self.label_train[idx]
             else:
-                return self.data_train[index], self.label_train[index]
+                return torch.LongTensor(self.data_train[index]), self.label_train[index]
         else:
-            return self.data_test[index], self.label_test[index]
+            return torch.LongTensor(self.data_test[index]), self.label_test[index]
 
     def __len__(self):
         if self.is_train:

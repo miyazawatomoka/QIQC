@@ -9,9 +9,10 @@ class WordEmbeddingUtil:
     WORD_TO_FREQUENCY_CACHE_PATH = "../cache/word_to_frequency.pkl"
 
     def __init__(self, word2vec_path=Config.WORD2VEC_PATH):
-        if word2vec_path:
-            self.word2vec = gensim.models.KeyedVectors.load_word2vec_format(word2vec_path, binary=True)
         self.unk_vec = np.random.rand(Config.EMBEDDING_SIZE)
+        self.pad_vec = np.zeros(Config.EMBEDDING_SIZE, dtype=np.float32)
+        self.start_vec = np.ones(Config.EMBEDDING_SIZE, dtype=np.float32)
+        self.end_vec = np.full(Config.EMBEDDING_SIZE, -1, dtype=np.float32)
 
     @staticmethod
     def get_vovab(words_list, word_frequency=Config.WORD_FREQUENCY):
@@ -39,6 +40,7 @@ class WordEmbeddingUtil:
                 pickle.dump(obj=word_to_frequency, file=out_f)
         return word_to_frequency
 
+    @DeprecationWarning
     def get_word2vec_vec(self, word):
         if word == Config.PADDING_CHAR:
             return np.zeros(Config.EMBEDDING_SIZE, dtype=np.float32)
@@ -52,6 +54,25 @@ class WordEmbeddingUtil:
             word = word.lower()
         return self.word2vec[word]
 
-    def is_word_in_word2vec(self, word):
-        return word in self.word2vec.vocab.keys()
+    def get_embedding_weight(self, pretrained_weight):
+        retain_chars = np.array([self.start_vec, self.end_vec, self.pad_vec, self.unk_vec])
+        return np.vstack((retain_chars, pretrained_weight))
+
+    @classmethod
+    def get_idx_by_word(cls, word2idx, word):
+        if word == Config.START_CHAR:
+            return Config.START_IDX
+        elif word == Config.END_CHAR:
+            return Config.END_IDX
+        elif word == Config.PADDING_CHAR:
+            return Config.PADDING_IDX
+        elif (word not in word2idx) and (word.lower() not in word2idx):
+            return Config.UNKNOWN_IDX
+        elif word in word2idx:
+            return word2idx[word] + Config.RETAIN_COUNT
+        elif (word not in word2idx) and (word.lower() in word2idx):
+            return word2idx[word.lower()] + Config.RETAIN_COUNT
+
+
+
 

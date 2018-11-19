@@ -10,7 +10,7 @@ class NormTrainer:
     def __init__(self, model, train_dataset, test_dataset, batch_size=Config.Norm_BATCH_SIZE):
         self.model = model
         self.train_loader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
-        self.test_loader = DataLoader(test_dataset)
+        self.test_loader = DataLoader(test_dataset, batch_size=batch_size)
         self.optimizer = optim.Adam(self.model.parameters())
         self.criterion = torch.nn.BCELoss()
         if Config.USE_GPU:
@@ -22,11 +22,12 @@ class NormTrainer:
         for batch_idx, (data, label) in enumerate(self.train_loader):
             self.optimizer.zero_grad()
             vdata = Variable(data)
-            vlabel = Variable(label.float())
+            vlabel = Variable(label)
             if Config.USE_GPU:
                 vdata = vdata.cuda()
                 vlabel = vlabel.cuda()
             predict = self.model(vdata)
+            torch.squeeze_(predict)
             loss = self.criterion(predict, vlabel)
             loss.backward()
             train_loss += loss.item()
@@ -40,11 +41,12 @@ class NormTrainer:
         with torch.no_grad():
             for batch_idx, (data, label) in enumerate(self.test_loader):
                 vdata = Variable(data)
-                vlabel = Variable(label.float())
+                vlabel = Variable(label)
                 if Config.USE_GPU:
                     vdata = vdata.cuda()
                     vlabel = vlabel.cuda()
                 predict = self.model(vdata)
+                torch.squeeze_(predict)
                 correct_count += TrainerUtil.get_sigmoid_correct_count(predict, vlabel)
                 loss = self.criterion(predict, vlabel)
                 test_loss += loss.item()
