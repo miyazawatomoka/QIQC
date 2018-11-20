@@ -33,7 +33,7 @@ text_util = TextUtil()
 
 # In[4]:
 # get train label
-np.save('../data/train_label.npy', df.target.values)
+np.save('../../input/train_label.npy', df.target.values)
 
 
 # In[5]:
