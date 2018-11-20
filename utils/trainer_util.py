@@ -14,4 +14,5 @@ class TrainerUtil:
     @staticmethod
     def get_f1_score_by_predict_sigmoid(predict, true_lable):
         predict = np.round(predict)
+        true_lable = np.round(true_lable)
         return f1_score(predict, true_lable)
