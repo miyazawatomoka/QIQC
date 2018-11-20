@@ -23,7 +23,7 @@ import gc
 
 # In[2]:
 # df = pd.read_excel('../data/train_sub.xlsx')
-df = pd.read_csv('../data/train.csv')
+df = pd.read_csv('../../input/train.csv')
 # df = pd.read_csv('../../input/test.csv')
 
 
