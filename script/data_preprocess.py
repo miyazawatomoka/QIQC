@@ -76,7 +76,7 @@ for words in tqdm.tqdm(filter_words):
 
 
 # In[27]:
-with open('../cache/words.pkl', mode='wb') as f:
+with open('../../cache/words.pkl', mode='wb') as f:
     pickle.dump(file=f, obj=pad_and_cut_words)
 
 
