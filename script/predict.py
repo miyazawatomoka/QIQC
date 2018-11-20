@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../')
 from utils import WordEmbeddingUtil, TextUtil, Word2vecUtil
 from config import Config
 import numpy as np
