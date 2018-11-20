@@ -39,4 +39,4 @@ class Config:
 
     # PARAMTER
     TESTSET_RATE = 0.2
-    POSTIVE_TIMES = 4                                # 平均训练几次加入一个正样本
+    POSTIVE_TIMES = 2                                # 平均训练几次加入一个正样本
