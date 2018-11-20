@@ -49,7 +49,7 @@ class NormTrainer:
                     vdata = vdata.cuda()
                     vlabel = vlabel.cuda()
                 predict = self.model(vdata)
-                torch.squeeze_(predict)
+                predict = torch.squeeze(predict)
                 predict_numpy = np.append(predict_numpy, predict.cpu().numpy())
                 label_numpy = np.append(label_numpy, vlabel.cpu().numpy())
                 correct_count += TrainerUtil.get_sigmoid_correct_count(predict, vlabel)
