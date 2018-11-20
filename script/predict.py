@@ -10,7 +10,6 @@ import gc
 
 
 word2vec_util = None
-text_cnn_model = torch.load('../pretrained/text_cnn_static.h5')
 df = pd.read_csv('../../input/test.csv')
 model = torch.load('../../pretrained/text_cnn_static.h5')
 
