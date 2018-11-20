@@ -28,7 +28,7 @@ class NormTrainer:
                 vdata = vdata.cuda()
                 vlabel = vlabel.cuda()
             predict = self.model(vdata)
-            torch.squeeze_(predict)
+            predict = torch.squeeze(predict)
             loss = self.criterion(predict, vlabel)
             loss.backward()
             train_loss += loss.item()
