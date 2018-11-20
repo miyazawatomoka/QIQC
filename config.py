@@ -16,7 +16,7 @@ class Config:
     WORD2VEC_DATA_PATH = '../../input/word2vec_idx_data.npy'
 
     # WORD EMBEDDING PARAMETER
-    SENTENCE_MAX_LEN = 50
+    SENTENCE_MAX_LEN = 30
     EMBEDDING_SIZE = 300
     WORD_FREQUENCY = 3                              # 词频数大于这个列入词列表
 
@@ -28,11 +28,11 @@ class Config:
     RETAIN_COUNT = 4
 
     # TEXT CNN
-    CNN_OUT_CHANNEL_NUM = 20
+    CNN_OUT_CHANNEL_NUM = 128
     CNN_DROPOUT = 0.5
-    CNN_KERNEL_NUM = 100
-    CNN_BATCH_SIZE = 20
-    CNN_EPOCH = 50
+    CNN_KERNEL_NUM = 128
+    CNN_BATCH_SIZE = 256
+    CNN_EPOCH = 200
 
     # NormTrainer
     Norm_BATCH_SIZE = 500
