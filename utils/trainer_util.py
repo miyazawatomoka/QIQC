@@ -1,4 +1,6 @@
 import torch
+from sklearn.metrics import f1_score
+import numpy as np
 
 
 class TrainerUtil:
@@ -8,3 +10,8 @@ class TrainerUtil:
         diff = tlabel.sub(predict)
         abs = torch.abs(diff)
         return predict.size()[0] - torch.sum(abs).item()
+
+    @staticmethod
+    def get_f1_score_by_predict_sigmoid(predict, true_lable):
+        predict = np.round(predict)
+        return f1_score(predict, true_lable)
