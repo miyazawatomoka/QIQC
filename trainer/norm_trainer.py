@@ -40,7 +40,7 @@ class NormTrainer:
         test_loss = 0
         correct_count = 0
         predict_numpy = np.zeros(0)
-        label_numpy = np.zeors(0)
+        label_numpy = np.zeros(0)
         with torch.no_grad():
             for batch_idx, (data, label) in enumerate(self.test_loader):
                 vdata = Variable(data)
